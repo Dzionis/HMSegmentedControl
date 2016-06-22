@@ -181,6 +181,11 @@ typedef enum {
 @property(nonatomic, getter = isVerticalDividerEnabled) BOOL verticalDividerEnabled;
 
 /**
+ Default is NO. Set to YES to use images as background for segment section.
+*/
+@property(nonatomic, getter=isUseImageAsBacgroundForSegmentSection) BOOL useImageAsBacgroundForSegmentSection;
+
+/**
  Index of the currently selected segment.
  */
 @property (nonatomic, assign) NSInteger selectedSegmentIndex;

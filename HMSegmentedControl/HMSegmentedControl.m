@@ -385,7 +385,13 @@
             CGFloat textWidth = 0;
             
             if (self.segmentWidthStyle == HMSegmentedControlSegmentWidthStyleFixed) {
-                imageXOffset = (self.segmentWidth * idx) + (self.segmentWidth / 2.0f) - (imageWidth / 2.0f);
+              
+                // When we want to use image as background for section.
+                if (self.isUseImageAsBacgroundForSegmentSection) {
+                  imageXOffset = (self.segmentWidth * idx);
+                } else {
+                  imageXOffset = (self.segmentWidth * idx) + (self.segmentWidth / 2.0f) - (imageWidth / 2.0f);
+                }
                 textXOffset = self.segmentWidth * idx;
                 textWidth = self.segmentWidth;
             } else if (self.segmentWidthStyle == HMSegmentedControlSegmentWidthStyleDynamic) {
@@ -406,8 +412,15 @@
                 textXOffset = xOffset;
                 textWidth = [self.segmentWidthsArray[idx] floatValue];
             }
-            
-            CGFloat imageYOffset = roundf((CGRectGetHeight(self.frame) - self.selectionIndicatorHeight) / 2.0f);
+      
+            CGFloat imageYOffset;
+      
+            if (self.isUseImageAsBacgroundForSegmentSection) {
+              imageYOffset = 0.0f;
+            } else {
+              imageYOffset = roundf((CGRectGetHeight(self.frame) - self.selectionIndicatorHeight) / 2.0f);
+            }
+      
             CGRect imageRect = CGRectMake(imageXOffset, imageYOffset, imageWidth, imageHeight);
             CGRect textRect = CGRectMake(textXOffset, yOffset, textWidth, stringHeight);
             
