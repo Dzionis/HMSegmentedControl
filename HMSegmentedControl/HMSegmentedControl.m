@@ -143,6 +143,7 @@
     self.segmentWidthStyle = HMSegmentedControlSegmentWidthStyleFixed;
     self.userDraggable = YES;
     self.touchEnabled = YES;
+    self.useImageAsBacgroundForSegmentSection = NO;
     self.verticalDividerEnabled = NO;
     self.type = HMSegmentedControlTypeText;
     self.verticalDividerWidth = 1.0f;
