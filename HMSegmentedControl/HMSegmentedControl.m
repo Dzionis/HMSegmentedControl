@@ -375,7 +375,17 @@
     } else if (self.type == HMSegmentedControlTypeTextImages){
 		[self.sectionImages enumerateObjectsUsingBlock:^(id iconImage, NSUInteger idx, BOOL *stop) {
             UIImage *icon = iconImage;
-            CGFloat imageWidth = icon.size.width;
+      
+            CGFloat imageWidth;
+      
+            // If we want to use image as background it width should
+            // be as segment width.
+            if (self.isUseImageAsBacgroundForSegmentSection) {
+              imageWidth = self.segmentWidth;
+            } else {
+              imageWidth = icon.size.width;
+            }
+      
             CGFloat imageHeight = icon.size.height;
 			
             CGFloat stringHeight = [self measureTitleAtIndex:idx].height;
