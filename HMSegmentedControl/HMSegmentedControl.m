@@ -394,7 +394,8 @@
             CGFloat imageXOffset = self.segmentEdgeInset.left; // Start with edge inset
             CGFloat textXOffset  = self.segmentEdgeInset.left;
             CGFloat textWidth = 0;
-            
+            CGFloat textYOffset  = self.segmentEdgeInset.top;
+      
             if (self.segmentWidthStyle == HMSegmentedControlSegmentWidthStyleFixed) {
               
                 // When we want to use image as background for section.
@@ -433,7 +434,7 @@
             }
       
             CGRect imageRect = CGRectMake(imageXOffset, imageYOffset, imageWidth, imageHeight);
-            CGRect textRect = CGRectMake(textXOffset, yOffset, textWidth, stringHeight);
+            CGRect textRect = CGRectMake(textXOffset, yOffset+textYOffset, textWidth, stringHeight);
             
             // Fix rect position/size to avoid blurry labels
             textRect = CGRectMake(ceilf(textRect.origin.x), ceilf(textRect.origin.y), ceilf(textRect.size.width), ceilf(textRect.size.height));
